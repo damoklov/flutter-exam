@@ -1,18 +1,23 @@
 class StateCounter {
   int total;
+  int memoryCount;
 
-  int topLeftBox;
-  int bottomLeftBox;
-  int topRightBox;
-  int bottomRightBox;
+  List<bool> pressedButtons = [false, false, false, false];
+
+  int topLeftButton;
+  int topRightButton;
+  int bottomRightButton;
+  int bottomLeftButton;
 
   StateCounter({
-    this.topLeftBox = 0,
-    this.bottomLeftBox = 0,
-    this.topRightBox = 0,
-    this.bottomRightBox = 0,
     this.total = 0,
+    this.memoryCount = 0,
+
+    this.topLeftButton = 0,
+    this.topRightButton = 0,
+    this.bottomLeftButton = 0,
+    this.bottomRightButton = 0,
   });
 }
 
-StateCounter state = StateCounter(topLeftBox: 0, bottomLeftBox: 0, bottomRightBox: 0, topRightBox: 0);
+StateCounter state = StateCounter(topLeftButton: 0, bottomLeftButton: 0, bottomRightButton: 0, topRightButton: 0, memoryCount: 0);
