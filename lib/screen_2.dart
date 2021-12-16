@@ -23,6 +23,9 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Screen"),
+      ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
