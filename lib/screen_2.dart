@@ -24,7 +24,7 @@ class _SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Screen"),
+        title: const Text("Second Screen"),
       ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -85,5 +85,4 @@ class _SecondScreenState extends State<SecondScreen> {
       ),
     );
   }
-
 }

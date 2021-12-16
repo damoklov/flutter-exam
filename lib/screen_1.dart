@@ -13,31 +13,31 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
 
-  Button1Counter() {
+  button1Counter() {
     setState(() {
       state.topLeftBox += 1;
-      state.total +=1;
+      state.total += 1;
     });
   }
 
-  Button2Counter() {
+  button2Counter() {
     setState(() {
       state.topRightBox += 1;
-      state.total +=1;
+      state.total += 1;
     });
   }
 
-  Button3Counter() {
+  button3Counter() {
     setState(() {
       state.bottomLeftBox += 1;
-      state.total += 1 ;
+      state.total += 1;
     });
   }
 
-  Button4Counter() {
+  button4Counter() {
     setState(() {
       state.bottomRightBox += 1;
-      state.total +=1 ;
+      state.total +=1;
     });
   }
 
@@ -56,14 +56,14 @@ class _FirstScreenState extends State<FirstScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: Button1Counter,
+                      onTap: button1Counter,
                       child: Container(
                         color: Colors.green,
                         width: 100,
                         height: 100,
                       )),
                   GestureDetector(
-                      onTap: Button2Counter,
+                      onTap: button2Counter,
                       child: Container(
                         color: Colors.green,
                         width: 100,
@@ -96,14 +96,14 @@ class _FirstScreenState extends State<FirstScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: Button3Counter,
+                      onTap: button3Counter,
                       child: Container(
                         color: Colors.green,
                         width: 100,
                         height: 100,
                       )),
                   GestureDetector(
-                      onTap: Button4Counter,
+                      onTap: button4Counter,
                       child: Container(
                         color: Colors.green,
                         width: 100,
@@ -117,6 +117,4 @@ class _FirstScreenState extends State<FirstScreen> {
       ],
     );
   }
-
-
 }
