@@ -13,31 +13,55 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
 
-  button1Counter() {
+  topLeftCount() {
     setState(() {
-      state.topLeftBox += 1;
       state.total += 1;
+      if (state.total == 4) {
+        state.total = 0;
+        state.pressedButtons = [true, false, false, false];
+      }
+
+      state.topLeftButton += 1;
+      state.memoryCount += 1;
     });
   }
 
-  button2Counter() {
+  topRightCount() {
+    state.total += 1;
+    if (state.total == 4) {
+      state.total = 0;
+      state.pressedButtons = [false, true, false, false];
+    }
+
     setState(() {
-      state.topRightBox += 1;
-      state.total += 1;
+      state.topRightButton += 1;
+      state.memoryCount += 1;
     });
   }
 
-  button3Counter() {
+  bottomLeftCount() {
+    state.total += 1;
+    if (state.total == 4) {
+      state.total = 0;
+      state.pressedButtons = [false, false, true, false];
+    }
+
     setState(() {
-      state.bottomLeftBox += 1;
-      state.total += 1;
+      state.bottomLeftButton += 1;
+      state.memoryCount += 1;
     });
   }
 
-  button4Counter() {
+  bottomRightCount() {
+    state.total += 1;
+    if (state.total == 4) {
+      state.total = 0;
+      state.pressedButtons = [false, false, false, true];
+    }
+
     setState(() {
-      state.bottomRightBox += 1;
-      state.total +=1;
+      state.bottomRightButton += 1;
+      state.memoryCount += 1;
     });
   }
 
@@ -48,7 +72,6 @@ class _FirstScreenState extends State<FirstScreen> {
       children: [
         SizedBox(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -56,19 +79,20 @@ class _FirstScreenState extends State<FirstScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: button1Counter,
+                      onTap:(!state.pressedButtons[0]) ? topLeftCount:(){},
                       child: Container(
-                        color: Colors.green,
+                        color:(!state.pressedButtons[0]) ? Colors.green : Colors.red,
                         width: 100,
                         height: 100,
                       )),
                   GestureDetector(
-                      onTap: button2Counter,
+                      onTap:(!state.pressedButtons[1]) ? topRightCount:(){},
                       child: Container(
-                        color: Colors.green,
+                        color:(!state.pressedButtons[1]) ? Colors.green : Colors.red,
                         width: 100,
                         height: 100,
-                      )),
+                      ),
+                  ),
                 ],
               ),
               Row(
@@ -83,12 +107,19 @@ class _FirstScreenState extends State<FirstScreen> {
                         );
                       },
                       child: Container(
-                          color: Colors.green,
+                          decoration: const BoxDecoration(
+                            color: Colors.green,
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(400)),
+                          ),
                           width: 100,
                           height: 100,
-                          child: Text(
-                              "Screen 1: " + state.total.toString())
-                      )
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                                "Screen #1: " + state.memoryCount.toString()),
+                          ),
+                      ),
                   ),
                 ],
               ),
@@ -96,19 +127,20 @@ class _FirstScreenState extends State<FirstScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
-                      onTap: button3Counter,
+                      onTap: (!state.pressedButtons[2]) ? bottomLeftCount:(){},
                       child: Container(
-                        color: Colors.green,
+                        color:(!state.pressedButtons[2]) ? Colors.green : Colors.red,
                         width: 100,
                         height: 100,
                       )),
                   GestureDetector(
-                      onTap: button4Counter,
+                      onTap: (!state.pressedButtons[3]) ? bottomRightCount:(){},
                       child: Container(
-                        color: Colors.green,
+                        color:(!state.pressedButtons[3]) ? Colors.green : Colors.red,
                         width: 100,
                         height: 100,
-                      )),
+                      )
+                  ),
                 ],
               )
             ],

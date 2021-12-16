@@ -10,21 +10,11 @@ class SecondScreen extends StatefulWidget {
 }
 
 class _SecondScreenState extends State<SecondScreen> {
-
-  stateSave(){
-    setState(() {
-      state.bottomLeftBox = 0;
-      state.bottomRightBox = 0;
-      state.topLeftBox = 0;
-      state.topRightBox = 0;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Second Screen"),
+        title: const Text("Screen #2"),
       ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -39,43 +29,72 @@ class _SecondScreenState extends State<SecondScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                        color: Colors.blue,
+                        color: Colors.green,
                         width: 100,
                         height: 100,
-                        child: Text(state.topLeftBox.toString())),
+                        child: Text(
+                          state.topLeftButton.toString(),
+                          textAlign: TextAlign.center,
+                          textScaleFactor: 2.0,
+                        )
+                    ),
                     Container(
-                        color: Colors.blue,
+                        color: Colors.green,
                         width: 100,
                         height: 100,
-                        child: Text(state.topRightBox.toString())),
+                        child: Text(
+                          state.topRightButton.toString(),
+                          textAlign: TextAlign.center,
+                          textScaleFactor: 2.0,
+                        )
+                    ),
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     GestureDetector(
-                        onTap: stateSave,
+                        onTap: memoryStateChange,
                         child: Container(
-                            color: Colors.blue,
+                            decoration: const BoxDecoration(
+                              color: Colors.green,
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(400)),
+                            ),
                             width: 100,
                             height: 100,
-                            child: Text(
-                                "Total screen 2: " + state.total.toString()))),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                  "Screen #2: " + state.memoryCount.toString()),
+                            ),
+                        ),
+                    ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                        color: Colors.blue,
+                        color: Colors.green,
                         width: 100,
                         height: 100,
-                        child: Text(state.bottomLeftBox.toString())),
+                        child: Text(
+                          state.bottomLeftButton.toString(),
+                          textAlign: TextAlign.center,
+                          textScaleFactor: 2.0,
+                        )
+                    ),
                     Container(
-                        color: Colors.blue,
+                        color: Colors.green,
                         width: 100,
                         height: 100,
-                        child: Text(state.bottomRightBox.toString())),
+                        child: Text(
+                          state.bottomRightButton.toString(),
+                          textAlign: TextAlign.center,
+                          textScaleFactor: 2.0,
+                        )
+                    ),
                   ],
                 )
               ],
@@ -84,5 +103,16 @@ class _SecondScreenState extends State<SecondScreen> {
         ],
       ),
     );
+  }
+
+  memoryStateChange() {
+    setState(() {
+      state.pressedButtons = [false, false, false, false];
+
+      state.bottomLeftButton = 0;
+      state.topLeftButton = 0;
+      state.topRightButton = 0;
+      state.bottomRightButton = 0;
+    });
   }
 }
